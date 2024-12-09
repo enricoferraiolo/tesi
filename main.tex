@@ -1,0 +1,93 @@
+\documentclass[12pt,a4paper]{report}
+
+\input{capitoli/setup/lib}
+
+\hypersetup{
+pdftitle={Metodologie di attacco ai Large Language Models},
+pdfauthor={Enrico Ferraiolo}
+}
+
+\addbibresource{bib.bib}
+
+%\textwidth=450pt\oddsidemargin=0pt
+
+\begin{document}
+
+%frontespizio
+\input{capitoli/setup/frontespizio}
+
+%dedica
+\input{capitoli/setup/dedica}
+
+
+\pagenumbering{roman}                   %serve per mettere i numeri romani
+
+%% ABSTRACT
+\clearpage
+\thispagestyle{empty}
+\hfill
+\clearpage
+\input{capitoli/setup/abstract}
+\clearpage
+\thispagestyle{empty}
+\hfill
+\clearpage
+
+\clearpage{\pagestyle{empty}\cleardoublepage}
+
+\tableofcontents                        %crea l'indice
+\listoffigures  
+
+\pagenumbering{arabic}                  %mette i numeri arabi
+
+%introduzione
+\chapter{Introduzione}
+\input{capitoli/0-introduzione}
+
+%llm
+\chapter{Large Language Model}
+\input{capitoli/1-LLMs}
+
+%fooling
+\chapter{Fooling di LLM}
+\input{capitoli/2-fooling}
+
+%attacco
+\chapter{Attacco}
+\input{capitoli/3-attaccareLLM}
+
+%esperimenti
+\chapter{Esperimenti}
+\input{capitoli/4-esperimenti}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%per fare le conclusioni
+\chapter{Conclusioni}
+\input{capitoli/conclusioni}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%imposta l'intestazione di pagina
+\renewcommand{\chaptermark}[1]{\markright{\thechapter \ #1}{}}
+\lhead[\fancyplain{}{\bfseries\thepage}]{\fancyplain{}{\bfseries\rightmark}}
+
+%bibliografia
+\addcontentsline{toc}{chapter}{Bibliografia}
+\printbibliography
+
+
+
+%elenchi
+%\clearpage{\pagestyle{empty}\cleardoublepage}
+%\listoffigures                          %crea l'elenco delle figure
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%non numera l'ultima pagina sinistra
+% \clearpage{\pagestyle{empty}\cleardoublepage}
+%\listoftables                           %crea l'elenco delle tabelle
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%non numera l'ultima pagina sinistra
+% \clearpage{\pagestyle{empty}\cleardoublepage}
+
+%ringraziamenti
+
+% \chapter*{Ringraziamenti}
+% \thispagestyle{empty}
+% \input{capitoli/setup/ringraziamenti}
+
+\end{document}

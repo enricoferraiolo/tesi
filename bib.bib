@@ -1,0 +1,513 @@
+%3 tipi di attacchi:
+(1) model-based
+vulnerabilities that refers to the inherent weaknesses and attacks that directly target an LLM, (2)
+training-time vulnerabilities that occur during the training phase of the LLM life cycle, and (3)
+inference-time vulnerabilities that affect LLMs during the inference phase
+@misc{abdali2024llmsfooledinvestigatingvulnerabilities,
+	title        = {Can LLMs be Fooled? Investigating Vulnerabilities in LLMs},
+	author       = {Sara Abdali and Jia He and CJ Barberan and Richard Anarfi},
+	year         = 2024,
+	url          = {https://arxiv.org/abs/2407.20529},
+	eprint       = {2407.20529},
+	archiveprefix = {arXiv},
+	primaryclass = {cs.LG}
+}
+%model leeching, attacco a chatgpt3.5
+@misc{birch2023modelleechingextractionattack,
+	title        = {Model Leeching: An Extraction Attack Targeting LLMs},
+	author       = {Lewis Birch and William Hackett and Stefan Trawicki and Neeraj Suri and Peter Garraghan},
+	year         = 2023,
+	url          = {https://arxiv.org/abs/2309.10544},
+	eprint       = {2309.10544},
+	archiveprefix = {arXiv},
+	primaryclass = {cs.LG}
+}
+%attacking a LLM with MedFuzz. targeting a LLM with an attacker LLM in order to show its weaknesses, using medfuzz algorithm
+@misc{ness2024medfuzzexploringrobustnesslarge,
+	title        = {MedFuzz: Exploring the Robustness of Large Language Models in Medical Question Answering},
+	author       = {Robert Osazuwa Ness and Katie Matton and Hayden Helm and Sheng Zhang and Junaid Bajwa and Carey E. Priebe and Eric Horvitz},
+	year         = 2024,
+	url          = {https://arxiv.org/abs/2406.06573},
+	eprint       = {2406.06573},
+	archiveprefix = {arXiv},
+	primaryclass = {cs.CL}
+}
+%linearity of a neural network its the main cause of vulnerability to adversarial perturbation
+@misc{goodfellow2015explainingharnessingadversarialexamples,
+	title        = {Explaining and Harnessing Adversarial Examples},
+	author       = {Ian J. Goodfellow and Jonathon Shlens and Christian Szegedy},
+	year         = 2015,
+	url          = {https://arxiv.org/abs/1412.6572},
+	eprint       = {1412.6572},
+	archiveprefix = {arXiv},
+	primaryclass = {stat.ML}
+}
+%llm can fool themselves
+@misc{xu2023llmfoolitselfpromptbased,
+	title        = {An LLM can Fool Itself: A Prompt-Based Adversarial Attack},
+	author       = {Xilie Xu and Keyi Kong and Ning Liu and Lizhen Cui and Di Wang and Jingfeng Zhang and Mohan Kankanhalli},
+	year         = 2023,
+	url          = {https://arxiv.org/abs/2310.13345},
+	eprint       = {2310.13345},
+	archiveprefix = {arXiv},
+	primaryclass = {cs.CR}
+}
+%this article makes it clear that MLLMs are easy to fool. It also provides a partial solution to the problem -> think twice before answering. but it isnt enough
+@misc{qian2024easyfoolmultimodalllms,
+	title        = {How Easy is It to Fool Your Multimodal LLMs? An Empirical Analysis on Deceptive Prompts},
+	author       = {Yusu Qian and Haotian Zhang and Yinfei Yang and Zhe Gan},
+	year         = 2024,
+	url          = {https://arxiv.org/abs/2402.13220},
+	eprint       = {2402.13220},
+	archiveprefix = {arXiv},
+	primaryclass = {cs.CV}
+}
+this article shows state of art attacks and defenses framework on llms.
+@article{kumar2024adversarialattacksdefensesllm,
+	title        = {Adversarial attacks and defenses for large language models (LLMs): methods, frameworks {\&} challenges},
+	author       = {Kumar, Pranjal},
+	year         = 2024,
+	month        = {Jun},
+	day          = 25,
+	journal      = {International Journal of Multimedia Information Retrieval},
+	volume       = 13,
+	number       = 3,
+	pages        = 26,
+	doi          = {10.1007/s13735-024-00334-8},
+	issn         = {2192-662X},
+	url          = {https://doi.org/10.1007/s13735-024-00334-8},
+	abstract     = {Large language models (LLMs) have exhibited remarkable efficacy and proficiency in a wide array of NLP endeavors. Nevertheless, concerns are growing rapidly regarding the security and vulnerabilities linked to the adoption and incorporation of LLM. In this work, a systematic study focused on the most up-to-date attack and defense frameworks for the LLM is presented. This work delves into the intricate landscape of adversarial attacks on language models (LMs) and presents a thorough problem formulation. It covers a spectrum of attack enhancement techniques and also addresses methods for strengthening LLMs. This study also highlights challenges in the field, such as the assessment of offensive or defensive performance, defense and attack transferability, high computational requirements, embedding space size, and perturbation. This survey encompasses more than 200 recent papers concerning adversarial attacks and techniques. By synthesizing a broad array of attack techniques, defenses, and challenges, this paper contributes to the ongoing discourse on securing LM against adversarial threats.}
+}
+% backpropagation on input
+@misc{intriguing13,
+	title        = {Intriguing properties of neural networks},
+	author       = {Christian Szegedy and Wojciech Zaremba and Ilya Sutskever and Joan Bruna and Dumitru Erhan and Ian Goodfellow and Rob Fergus},
+	year         = 2014,
+	url          = {https://arxiv.org/abs/1312.6199},
+	eprint       = {1312.6199},
+	archiveprefix = {arXiv},
+	primaryclass = {cs.CV}
+}
+@inproceedings{blackbox_fool15,
+	title        = {Deep neural networks are easily fooled: High confidence predictions for unrecognizable images},
+	author       = {Anh Mai Nguyen and Jason Yosinski and Jeff Clune},
+	year         = 2015,
+	booktitle    = {{IEEE} Conference on Computer Vision and Pattern Recognition, {CVPR} 2015, Boston, MA, USA, June 7-12, 2015},
+	pages        = {427--436},
+	doi          = {10.1109/CVPR.2015.7298640},
+	url          = {https://doi.org/10.1109/CVPR.2015.7298640},
+	timestamp    = {Fri, 24 Mar 2023 00:02:54 +0100},
+	biburl       = {https://dblp.org/rec/conf/cvpr/NguyenYC15.bib},
+	bibsource    = {dblp computer science bibliography, https://dblp.org}
+}
+%defense against textual backdoor attacks
+@inproceedings{qi-etal-2021-onion,
+	title        = {{ONION}: A Simple and Effective Defense Against Textual Backdoor Attacks},
+	author       = {Qi, Fanchao  and Chen, Yangyi  and Li, Mukai  and Yao, Yuan  and Liu, Zhiyuan  and Sun, Maosong},
+	year         = 2021,
+	month        = nov,
+	booktitle    = {Proceedings of the 2021 Conference on Empirical Methods in Natural Language Processing},
+	publisher    = {Association for Computational Linguistics},
+	address      = {Online and Punta Cana, Dominican Republic},
+	pages        = {9558--9566},
+	doi          = {10.18653/v1/2021.emnlp-main.752},
+	url          = {https://aclanthology.org/2021.emnlp-main.752},
+	editor       = {Moens, Marie-Francine  and Huang, Xuanjing  and Specia, Lucia  and Yih, Scott Wen-tau},
+	abstract     = {Backdoor attacks are a kind of emergent training-time threat to deep neural networks (DNNs). They can manipulate the output of DNNs and possess high insidiousness. In the field of natural language processing, some attack methods have been proposed and achieve very high attack success rates on multiple popular models. Nevertheless, there are few studies on defending against textual backdoor attacks. In this paper, we propose a simple and effective textual backdoor defense named ONION, which is based on outlier word detection and, to the best of our knowledge, is the first method that can handle all the textual backdoor attack situations. Experiments demonstrate the effectiveness of our model in defending BiLSTM and BERT against five different backdoor attacks. All the code and data of this paper can be obtained at \url{https://github.com/thunlp/ONION}.}
+}
+% BadPre is a taskagnostic backdoor attack against the pre-trained NLP models
+@misc{chen2021badpretaskagnosticbackdoorattacks,
+	title        = {BadPre: Task-agnostic Backdoor Attacks to Pre-trained NLP Foundation Models},
+	author       = {Kangjie Chen and Yuxian Meng and Xiaofei Sun and Shangwei Guo and Tianwei Zhang and Jiwei Li and Chun Fan},
+	year         = 2021,
+	url          = {https://arxiv.org/abs/2110.02467},
+	eprint       = {2110.02467},
+	archiveprefix = {arXiv},
+	primaryclass = {cs.CL}
+}
+%general overview of LLMs
+@article{mohaimenul2024reviewlargelanguagemodels,
+	title        = {A Review on Large Language Models: Architectures, Applications, Taxonomies, Open Issues and Challenges},
+	author       = {Raiaan, Mohaimenul Azam Khan and Mukta, Md. Saddam Hossain and Fatema, Kaniz and Fahad, Nur Mohammad and Sakib, Sadman and Mim, Most Marufatul Jannat and Ahmad, Jubaer and Ali, Mohammed Eunus and Azam, Sami},
+	year         = 2024,
+	journal      = {IEEE Access},
+	volume       = 12,
+	number       = {},
+	pages        = {26839--26874},
+	doi          = {10.1109/ACCESS.2024.3365742},
+	keywords     = {Cognition;Artificial intelligence;Transformers;Training;Taxonomy;Task analysis;Surveys;Natural language processing;Question answering (information retrieval);Information analysis;Linguistics;Large language models (LLM);natural language processing (NLP);artificial intelligence;transformer;pre-trained models;taxonomy;application}
+}
+%transformers
+@misc{vaswani2023attentionneed,
+	title        = {Attention Is All You Need},
+	author       = {Ashish Vaswani and Noam Shazeer and Niki Parmar and Jakob Uszkoreit and Llion Jones and Aidan N. Gomez and Lukasz Kaiser and Illia Polosukhin},
+	year         = 2023,
+	url          = {https://arxiv.org/abs/1706.03762},
+	eprint       = {1706.03762},
+	archiveprefix = {arXiv},
+	primaryclass = {cs.CL}
+}
+%article questioning wether or not llms are p-zombies
+@article{blaise2022llmunderstandus,
+	title        = {Do Large Language Models Understand Us?},
+	author       = {Arcas, Blaise},
+	year         = 2022,
+	month        = {05},
+	journal      = {Daedalus},
+	volume       = 151,
+	pages        = {183--197},
+	doi          = {10.1162/daed_a_01909}
+}
+% MODELS
+
+%gemma2
+@article{gemma_2024,
+	title        = {Gemma},
+	author       = {Gemma Team},
+	year         = 2024,
+	publisher    = {Kaggle},
+	doi          = {10.34740/KAGGLE/M/3301},
+	url          = {https://www.kaggle.com/m/3301}
+}
+%chagpt 4o
+@misc{openaihellogpt4o,
+	title        = {Hello GPT-4o},
+	author       = {OpenAI},
+	year         = 2024,
+	note         = {Visitato il: 08/10/2024},
+	howpublished = {\url{https://openai.com/index/hello-gpt-4o/}}
+}
+%llama 3 paper
+@misc{dubey2024llama3herdmodels,
+	title        = {The Llama 3 Herd of Models},
+	author       = {Abhimanyu Dubey and Abhinav Jauhri and Abhinav Pandey and Abhishek Kadian and Ahmad Al-Dahle and Aiesha Letman and Akhil Mathur and Alan Schelten and Amy Yang and Angela Fan and Anirudh Goyal and Anthony Hartshorn and Aobo Yang and Archi Mitra and Archie Sravankumar and Artem Korenev and Arthur Hinsvark and Arun Rao and Aston Zhang and Aurelien Rodriguez and Austen Gregerson and Ava Spataru and Baptiste Roziere and Bethany Biron and Binh Tang and Bobbie Chern and Charlotte Caucheteux and Chaya Nayak and Chloe Bi and Chris Marra and Chris McConnell and Christian Keller and Christophe Touret and Chunyang Wu and Corinne Wong and Cristian Canton Ferrer and Cyrus Nikolaidis and Damien Allonsius and Daniel Song and Danielle Pintz and Danny Livshits and David Esiobu and Dhruv Choudhary and Dhruv Mahajan and Diego Garcia-Olano and Diego Perino and Dieuwke Hupkes and Egor Lakomkin and Ehab AlBadawy and Elina Lobanova and Emily Dinan and Eric Michael Smith and Filip Radenovic and Frank Zhang and Gabriel Synnaeve and Gabrielle Lee and Georgia Lewis Anderson and Graeme Nail and Gregoire Mialon and Guan Pang and Guillem Cucurell and Hailey Nguyen and Hannah Korevaar and Hu Xu and Hugo Touvron and Iliyan Zarov and Imanol Arrieta Ibarra and Isabel Kloumann and Ishan Misra and Ivan Evtimov and Jade Copet and Jaewon Lee and Jan Geffert and Jana Vranes and Jason Park and Jay Mahadeokar and Jeet Shah and Jelmer van der Linde and Jennifer Billock and Jenny Hong and Jenya Lee and Jeremy Fu and Jianfeng Chi and Jianyu Huang and Jiawen Liu and Jie Wang and Jiecao Yu and Joanna Bitton and Joe Spisak and Jongsoo Park and Joseph Rocca and Joshua Johnstun and Joshua Saxe and Junteng Jia and Kalyan Vasuden Alwala and Kartikeya Upasani and Kate Plawiak and Ke Li and Kenneth Heafield and Kevin Stone and Khalid El-Arini and Krithika Iyer and Kshitiz Malik and Kuenley Chiu and Kunal Bhalla and Lauren Rantala-Yeary and Laurens van der Maaten and Lawrence Chen and Liang Tan and Liz Jenkins and Louis Martin and Lovish Madaan and Lubo Malo and Lukas Blecher and Lukas Landzaat and Luke de Oliveira and Madeline Muzzi and Mahesh Pasupuleti and Mannat Singh and Manohar Paluri and Marcin Kardas and Mathew Oldham and Mathieu Rita and Maya Pavlova and Melanie Kambadur and Mike Lewis and Min Si and Mitesh Kumar Singh and Mona Hassan and Naman Goyal and Narjes Torabi and Nikolay Bashlykov and Nikolay Bogoychev and Niladri Chatterji and Olivier Duchenne and Onur Çelebi and Patrick Alrassy and Pengchuan Zhang and Pengwei Li and Petar Vasic and Peter Weng and Prajjwal Bhargava and Pratik Dubal and Praveen Krishnan and Punit Singh Koura and Puxin Xu and Qing He and Qingxiao Dong and Ragavan Srinivasan and Raj Ganapathy and Ramon Calderer and Ricardo Silveira Cabral and Robert Stojnic and Roberta Raileanu and Rohit Girdhar and Rohit Patel and Romain Sauvestre and Ronnie Polidoro and Roshan Sumbaly and Ross Taylor and Ruan Silva and Rui Hou and Rui Wang and Saghar Hosseini and Sahana Chennabasappa and Sanjay Singh and Sean Bell and Seohyun Sonia Kim and Sergey Edunov and Shaoliang Nie and Sharan Narang and Sharath Raparthy and Sheng Shen and Shengye Wan and Shruti Bhosale and Shun Zhang and Simon Vandenhende and Soumya Batra and Spencer Whitman and Sten Sootla and Stephane Collot and Suchin Gururangan and Sydney Borodinsky and Tamar Herman and Tara Fowler and Tarek Sheasha and Thomas Georgiou and Thomas Scialom and Tobias Speckbacher and Todor Mihaylov and Tong Xiao and Ujjwal Karn and Vedanuj Goswami and Vibhor Gupta and Vignesh Ramanathan and Viktor Kerkez and Vincent Gonguet and Virginie Do and Vish Vogeti and Vladan Petrovic and Weiwei Chu and Wenhan Xiong and Wenyin Fu and Whitney Meers and Xavier Martinet and Xiaodong Wang and Xiaoqing Ellen Tan and Xinfeng Xie and Xuchao Jia and Xuewei Wang and Yaelle Goldschlag and Yashesh Gaur and Yasmine Babaei and Yi Wen and Yiwen Song and Yuchen Zhang and Yue Li and Yuning Mao and Zacharie Delpierre Coudert and Zheng Yan and Zhengxing Chen and Zoe Papakipos and Aaditya Singh and Aaron Grattafiori and Abha Jain and Adam Kelsey and Adam Shajnfeld and Adithya Gangidi and Adolfo Victoria and Ahuva Goldstand and Ajay Menon and Ajay Sharma and Alex Boesenberg and Alex Vaughan and Alexei Baevski and Allie Feinstein and Amanda Kallet and Amit Sangani and Anam Yunus and Andrei Lupu and Andres Alvarado and Andrew Caples and Andrew Gu and Andrew Ho and Andrew Poulton and Andrew Ryan and Ankit Ramchandani and Annie Franco and Aparajita Saraf and Arkabandhu Chowdhury and Ashley Gabriel and Ashwin Bharambe and Assaf Eisenman and Azadeh Yazdan and Beau James and Ben Maurer and Benjamin Leonhardi and Bernie Huang and Beth Loyd and Beto De Paola and Bhargavi Paranjape and Bing Liu and Bo Wu and Boyu Ni and Braden Hancock and Bram Wasti and Brandon Spence and Brani Stojkovic and Brian Gamido and Britt Montalvo and Carl Parker and Carly Burton and Catalina Mejia and Changhan Wang and Changkyu Kim and Chao Zhou and Chester Hu and Ching-Hsiang Chu and Chris Cai and Chris Tindal and Christoph Feichtenhofer and Damon Civin and Dana Beaty and Daniel Kreymer and Daniel Li and Danny Wyatt and David Adkins and David Xu and Davide Testuggine and Delia David and Devi Parikh and Diana Liskovich and Didem Foss and Dingkang Wang and Duc Le and Dustin Holland and Edward Dowling and Eissa Jamil and Elaine Montgomery and Eleonora Presani and Emily Hahn and Emily Wood and Erik Brinkman and Esteban Arcaute and Evan Dunbar and Evan Smothers and Fei Sun and Felix Kreuk and Feng Tian and Firat Ozgenel and Francesco Caggioni and Francisco Guzmán and Frank Kanayet and Frank Seide and Gabriela Medina Florez and Gabriella Schwarz and Gada Badeer and Georgia Swee and Gil Halpern and Govind Thattai and Grant Herman and Grigory Sizov and Guangyi and Zhang and Guna Lakshminarayanan and Hamid Shojanazeri and Han Zou and Hannah Wang and Hanwen Zha and Haroun Habeeb and Harrison Rudolph and Helen Suk and Henry Aspegren and Hunter Goldman and Ibrahim Damlaj and Igor Molybog and Igor Tufanov and Irina-Elena Veliche and Itai Gat and Jake Weissman and James Geboski and James Kohli and Japhet Asher and Jean-Baptiste Gaya and Jeff Marcus and Jeff Tang and Jennifer Chan and Jenny Zhen and Jeremy Reizenstein and Jeremy Teboul and Jessica Zhong and Jian Jin and Jingyi Yang and Joe Cummings and Jon Carvill and Jon Shepard and Jonathan McPhie and Jonathan Torres and Josh Ginsburg and Junjie Wang and Kai Wu and Kam Hou U and Karan Saxena and Karthik Prasad and Kartikay Khandelwal and Katayoun Zand and Kathy Matosich and Kaushik Veeraraghavan and Kelly Michelena and Keqian Li and Kun Huang and Kunal Chawla and Kushal Lakhotia and Kyle Huang and Lailin Chen and Lakshya Garg and Lavender A and Leandro Silva and Lee Bell and Lei Zhang and Liangpeng Guo and Licheng Yu and Liron Moshkovich and Luca Wehrstedt and Madian Khabsa and Manav Avalani and Manish Bhatt and Maria Tsimpoukelli and Martynas Mankus and Matan Hasson and Matthew Lennie and Matthias Reso and Maxim Groshev and Maxim Naumov and Maya Lathi and Meghan Keneally and Michael L. Seltzer and Michal Valko and Michelle Restrepo and Mihir Patel and Mik Vyatskov and Mikayel Samvelyan and Mike Clark and Mike Macey and Mike Wang and Miquel Jubert Hermoso and Mo Metanat and Mohammad Rastegari and Munish Bansal and Nandhini Santhanam and Natascha Parks and Natasha White and Navyata Bawa and Nayan Singhal and Nick Egebo and Nicolas Usunier and Nikolay Pavlovich Laptev and Ning Dong and Ning Zhang and Norman Cheng and Oleg Chernoguz and Olivia Hart and Omkar Salpekar and Ozlem Kalinli and Parkin Kent and Parth Parekh and Paul Saab and Pavan Balaji and Pedro Rittner and Philip Bontrager and Pierre Roux and Piotr Dollar and Polina Zvyagina and Prashant Ratanchandani and Pritish Yuvraj and Qian Liang and Rachad Alao and Rachel Rodriguez and Rafi Ayub and Raghotham Murthy and Raghu Nayani and Rahul Mitra and Raymond Li and Rebekkah Hogan and Robin Battey and Rocky Wang and Rohan Maheswari and Russ Howes and Ruty Rinott and Sai Jayesh Bondu and Samyak Datta and Sara Chugh and Sara Hunt and Sargun Dhillon and Sasha Sidorov and Satadru Pan and Saurabh Verma and Seiji Yamamoto and Sharadh Ramaswamy and Shaun Lindsay and Shaun Lindsay and Sheng Feng and Shenghao Lin and Shengxin Cindy Zha and Shiva Shankar and Shuqiang Zhang and Shuqiang Zhang and Sinong Wang and Sneha Agarwal and Soji Sajuyigbe and Soumith Chintala and Stephanie Max and Stephen Chen and Steve Kehoe and Steve Satterfield and Sudarshan Govindaprasad and Sumit Gupta and Sungmin Cho and Sunny Virk and Suraj Subramanian and Sy Choudhury and Sydney Goldman and Tal Remez and Tamar Glaser and Tamara Best and Thilo Kohler and Thomas Robinson and Tianhe Li and Tianjun Zhang and Tim Matthews and Timothy Chou and Tzook Shaked and Varun Vontimitta and Victoria Ajayi and Victoria Montanez and Vijai Mohan and Vinay Satish Kumar and Vishal Mangla and Vítor Albiero and Vlad Ionescu and Vlad Poenaru and Vlad Tiberiu Mihailescu and Vladimir Ivanov and Wei Li and Wenchen Wang and Wenwen Jiang and Wes Bouaziz and Will Constable and Xiaocheng Tang and Xiaofang Wang and Xiaojian Wu and Xiaolan Wang and Xide Xia and Xilun Wu and Xinbo Gao and Yanjun Chen and Ye Hu and Ye Jia and Ye Qi and Yenda Li and Yilin Zhang and Ying Zhang and Yossi Adi and Youngjin Nam and Yu and Wang and Yuchen Hao and Yundi Qian and Yuzi He and Zach Rait and Zachary DeVito and Zef Rosnbrick and Zhaoduo Wen and Zhenyu Yang and Zhiwei Zhao},
+	year         = 2024,
+	url          = {https://arxiv.org/abs/2407.21783},
+	eprint       = {2407.21783},
+	archiveprefix = {arXiv},
+	primaryclass = {cs.AI}
+}
+%mistral large 2
+@misc{mistralaimistrallarge2,
+	title        = {Mistral Large 2},
+	author       = {Mistral AI},
+	year         = 2024,
+	note         = {Visitato il: 08/10/2024},
+	howpublished = {\url{https://mistral.ai/news/mistral-large-2407/}}
+}
+%claude 3.5 sonnet
+@misc{anthropicclaude35sonnet,
+	title        = {Claude 3.5 Sonnet},
+	author       = {Anthropic},
+	year         = 2024,
+	note         = {Visitato il: 08/10/2024},
+	howpublished = {\url{https://www.anthropic.com/news/claude-3-5-sonnet}}
+}
+% classifica delle minacce degli LLM
+@misc{owasp2024threatstierlist,
+	title        = {OWASP Threats tier list},
+	author       = {OWASP},
+	year         = 2024,
+	note         = {Visitato il: 18/10/2024},
+	howpublished = {\url{https://owasp.org/www-project-top-10-for-large-language-model-applications/}}
+}
+%%% PROMPT INJECTION %%%
+
+%about prompt injection
+@inproceedings{liu2024formalizingbenchmarkingpromptinjectionattacksdefenses,
+	title        = {Formalizing and Benchmarking Prompt Injection Attacks and Defenses},
+	author       = {Yupei Liu and Yuqi Jia and Runpeng Geng and Jinyuan Jia and Neil Zhenqiang Gong},
+	year         = 2024,
+	month        = aug,
+	booktitle    = {33rd USENIX Security Symposium (USENIX Security 24)},
+	publisher    = {USENIX Association},
+	address      = {Philadelphia, PA},
+	pages        = {1831--1847},
+	isbn         = {978-1-939133-44-1},
+	url          = {https://www.usenix.org/conference/usenixsecurity24/presentation/liu-yupei}
+}
+% about prompt injection
+@misc{ibm2024whatispromptinjectionattack,
+	title        = {What is a prompt injection attack?},
+	author       = {ibm},
+	year         = 2024,
+	note         = {Visitato il: 20/10/2024},
+	howpublished = {\url{https://www.ibm.com/topics/prompt-injection}}
+}
+% figure about indirect prompt injection
+@misc{yi2024benchmarkingdefendingindirectprompt,
+	title        = {Benchmarking and Defending Against Indirect Prompt Injection Attacks on Large Language Models},
+	author       = {Jingwei Yi and Yueqi Xie and Bin Zhu and Emre Kiciman and Guangzhong Sun and Xing Xie and Fangzhao Wu},
+	year         = 2024,
+	url          = {https://arxiv.org/abs/2312.14197},
+	eprint       = {2312.14197},
+	archiveprefix = {arXiv},
+	primaryclass = {cs.CL}
+}
+% asses the vulnerability of indirect prompt injection in LLMs
+@inproceedings{zhan-etal-2024-injecagent,
+	title        = {{I}njec{A}gent: Benchmarking Indirect Prompt Injections in Tool-Integrated Large Language Model Agents},
+	author       = {Zhan, Qiusi  and Liang, Zhixiang  and Ying, Zifan  and Kang, Daniel},
+	year         = 2024,
+	month        = aug,
+	booktitle    = {Findings of the Association for Computational Linguistics ACL 2024},
+	publisher    = {Association for Computational Linguistics},
+	address      = {Bangkok, Thailand and virtual meeting},
+	pages        = {10471--10506},
+	doi          = {10.18653/v1/2024.findings-acl.624},
+	url          = {https://aclanthology.org/2024.findings-acl.624},
+	editor       = {Ku, Lun-Wei  and Martins, Andre  and Srikumar, Vivek},
+	abstract     = {Recent work has embodied LLMs as agents, allowing them to access tools, perform actions, and interact with external content (e.g., emails or websites). However, external content introduces the risk of indirect prompt injection (IPI) attacks, where malicious instructions are embedded within the content processed by LLMs, aiming to manipulate these agents into executing detrimental actions against users. Given the potentially severe consequences of such attacks, establishing benchmarks to assess and mitigate these risks is imperative.In this work, we introduce InjecAgent, a benchmark designed to assess the vulnerability of tool-integrated LLM agents to IPI attacks. InjecAgent comprises 1,054 test cases covering 17 different user tools and 62 attacker tools. We categorize attack intentions into two primary types: direct harm to users and exfiltration of private data. We conduct a comprehensive evaluation of 30 different LLM agents and show that agents are vulnerable to IPI attacks, with ReAct-prompted GPT-4 vulnerable to attacks 24{\%} of the time. Further investigation into an enhanced setting, where the attacker instructions are reinforced with a hacking prompt, shows additional increases in success rates. Our findings raise questions about the widespread deployment of LLM Agents.}
+}
+%defending from prompt injection through a framework called JATMO
+@inproceedings{piet2024jatmopromptinjectiondefense,
+	title        = {Jatmo: Prompt Injection Defense by Task-Specific Finetuning},
+	author       = {Piet, Julien and Alrashed, Maha and Sitawarin, Chawin and Chen, Sizhe and Wei, Zeming and Sun, Elizabeth and Alomair, Basel and Wagner, David},
+	year         = 2024,
+	booktitle    = {Computer Security -- ESORICS 2024},
+	publisher    = {Springer Nature Switzerland},
+	address      = {Cham},
+	pages        = {105--124},
+	isbn         = {978-3-031-70879-4},
+	editor       = {Garcia-Alfaro, Joaquin and Kozik, Rafal and Choras, Michal and Katsikas, Sokratis},
+	abstract     = {Large Language Models (LLMs) are attracting significant research attention due to their instruction-following abilities, allowing users and developers to leverage LLMs for a variety of tasks. However, LLMs are vulnerable to prompt-injection attacks: a class of attacks that hijack the model's instruction-following abilities, changing responses to prompts to undesired, possibly malicious ones. In this work, we introduce Jatmo , a method for generating task-specific models resilient to prompt-injection attacks. Jatmo leverages the fact that LLMs can only follow instructions once they have undergone instruction tuning. It harnesses a teacher instruction-tuned model to generate a task-specific dataset, which is then used to fine-tune a base model (i.e., a non-instruction-tuned model). Jatmo only needs a task prompt and a dataset of inputs for the task: it uses the teacher model to generate outputs. For situations with no pre-existing datasets, Jatmo can use a single example, or in some cases none at all, to produce a fully synthetic dataset. Our experiments on seven tasks show that Jatmo models provide similar quality of outputs on their specific task as standard LLMs, while being resilient to prompt injections. The best attacks succeeded in less than 0.5{\%} of cases against our models, versus 87{\%} success rate against GPT-3.5-Turbo. We release Jatmo at https://github.com/wagner-group/prompt-injection-defense.}
+}
+%%% DATA POISONING %%%
+% defendig neural network from data poisoning
+@inproceedings{degaspari2024haveyoupoisonedmydata,
+	title        = {Have You Poisoned My Data? Defending Neural Networks Against Data Poisoning},
+	author       = {De Gaspari, Fabio and Hitaj, Dorjan and Mancini, Luigi V.},
+	year         = 2024,
+	booktitle    = {Computer Security -- ESORICS 2024},
+	publisher    = {Springer Nature Switzerland},
+	address      = {Cham},
+	pages        = {85--104},
+	isbn         = {978-3-031-70879-4},
+	editor       = {Garcia-Alfaro, Joaquin and Kozik, Rafa{\l} and Chora{\'{s}}, Micha{\l} and Katsikas, Sokratis},
+	abstract     = {The unprecedented availability of training data fueled the rapid development of powerful neural networks in recent years. However, the need for such large amounts of data leads to potential threats such as poisoning attacks: adversarial manipulations of the training data aimed at compromising the learned model to achieve a given adversarial goal.}
+}
+% data poisoning experiment
+@misc{wan2023poisoninglanguagemodelsinstruction,
+	title        = {Poisoning Language Models During Instruction Tuning},
+	author       = {Alexander Wan and Eric Wallace and Sheng Shen and Dan Klein},
+	year         = 2023,
+	url          = {https://arxiv.org/abs/2305.00944},
+	eprint       = {2305.00944},
+	archiveprefix = {arXiv},
+	primaryclass = {cs.CL}
+}
+%data poisoning
+@misc{wallace2021concealeddatapoisoningattacks,
+	title        = {Concealed Data Poisoning Attacks on NLP Models},
+	author       = {Eric Wallace and Tony Z. Zhao and Shi Feng and Sameer Singh},
+	year         = 2021,
+	url          = {https://arxiv.org/abs/2010.12563},
+	eprint       = {2010.12563},
+	archiveprefix = {arXiv},
+	primaryclass = {cs.CL}
+}
+% security and privacy in LLMS
+@article{YAO2024surveyonllmsecurityandprivacy,
+	title        = {A survey on large language model (LLM) security and privacy: The Good, The Bad, and The Ugly},
+	author       = {Yifan Yao and Jinhao Duan and Kaidi Xu and Yuanfang Cai and Zhibo Sun and Yue Zhang},
+	year         = 2024,
+	journal      = {High-Confidence Computing},
+	volume       = 4,
+	number       = 2,
+	pages        = 100211,
+	doi          = {https://doi.org/10.1016/j.hcc.2024.100211},
+	issn         = {2667-2952},
+	url          = {https://www.sciencedirect.com/science/article/pii/S266729522400014X},
+	keywords     = {Large Language Model (LLM), LLM security, LLM privacy, ChatGPT, LLM attacks, LLM vulnerabilities},
+	abstract     = {Large Language Models (LLMs), such as ChatGPT and Bard, have revolutionized natural language understanding and generation. They possess deep language comprehension, human-like text generation capabilities, contextual awareness, and robust problem-solving skills, making them invaluable in various domains (e.g., search engines, customer support, translation). In the meantime, LLMs have also gained traction in the security community, revealing security vulnerabilities and showcasing their potential in security-related tasks. This paper explores the intersection of LLMs with security and privacy. Specifically, we investigate how LLMs positively impact security and privacy, potential risks and threats associated with their use, and inherent vulnerabilities within LLMs. Through a comprehensive literature review, the paper categorizes the papers into “The Good” (beneficial LLM applications), “The Bad” (offensive applications), and “The Ugly” (vulnerabilities of LLMs and their defenses). We have some interesting findings. For example, LLMs have proven to enhance code security (code vulnerability detection) and data privacy (data confidentiality protection), outperforming traditional methods. However, they can also be harnessed for various attacks (particularly user-level attacks) due to their human-like reasoning abilities. We have identified areas that require further research efforts. For example, Research on model and parameter extraction attacks is limited and often theoretical, hindered by LLM parameter scale and confidentiality. Safe instruction tuning, a recent development, requires more exploration. We hope that our work can shed light on the LLMs’ potential to both bolster and jeopardize cybersecurity.}
+}
+% data poisoning what is it
+@misc{cso2024howdatapoisoningattackscorruptmodels,
+	title        = {How data poisoning attacks corrupt machine learning models},
+	author       = {CSO},
+	year         = 2024,
+	note         = {Visitato il: 23/10/2024},
+	howpublished = {\url{https://www.csoonline.com/article/570555/how-data-poisoning-attacks-corrupt-machine-learning-models.html}}
+}
+% data poisoning image
+@misc{hexmos2024howmlmodeldatapoisoningworks,
+	title        = {How ML Model Data Poisoning Works in 5 Minutes},
+	author       = {Hexmos Journal},
+	year         = 2024,
+	note         = {Visitato il: 23/10/2024},
+	howpublished = {\url{https://journal.hexmos.com/training-data-poisoning/}}
+}
+% tay wikipedia
+@misc{wikipedia2024taychatbot,
+	title        = {Tay (chatbot)},
+	author       = {Wikipedia},
+	year         = 2024,
+	note         = {Visitato il: 28/10/2024},
+	howpublished = {\url{https://en.wikipedia.org/wiki/Tay_(chatbot)}}
+}
+% tay atlas
+@misc{atlas2016taypoisoning,
+	title        = {Tay (chatbot)},
+	author       = {Wikipedia},
+	year         = 2016,
+	note         = {Visitato il: 28/10/2024},
+	howpublished = {\url{https://atlas.mitre.org/studies/AML.CS0009/}}
+}
+% tay microsoft
+@misc{microsoft2016tay,
+	title        = {Meet Tay - Microsoft A.I. with zero chill},
+	author       = {Microsoft},
+	year         = 2016,
+	note         = {Visitato il: 28/10/2024},
+	howpublished = {\url{https://web.archive.org/web/20160323194709/https://tay.ai/}}
+}
+% tay microsoft incident
+@misc{microsoft2016learningfromtaysintroduction,
+	title        = {Learning from Tay's introduction},
+	author       = {Microsoft},
+	year         = 2016,
+	note         = {Visitato il: 28/10/2024},
+	howpublished = {\url{https://blogs.microsoft.com/blog/2016/03/25/learning-tays-introduction/}}
+}
+% BACKDOOR ATTACKS
+% framework to perform backdoor attacks
+@inproceedings{wang-etal-2024-badagent,
+	title        = {{B}ad{A}gent: Inserting and Activating Backdoor Attacks in {LLM} Agents},
+	author       = {Wang, Yifei  and Xue, Dizhan  and Zhang, Shengjie  and Qian, Shengsheng},
+	year         = 2024,
+	month        = aug,
+	booktitle    = {Proceedings of the 62nd Annual Meeting of the Association for Computational Linguistics (Volume 1: Long Papers)},
+	publisher    = {Association for Computational Linguistics},
+	address      = {Bangkok, Thailand},
+	pages        = {9811--9827},
+	doi          = {10.18653/v1/2024.acl-long.530},
+	url          = {https://aclanthology.org/2024.acl-long.530},
+	editor       = {Ku, Lun-Wei  and Martins, Andre  and Srikumar, Vivek},
+	abstract     = {With the prosperity of large language models (LLMs), powerful LLM-based intelligent agents have been developed to provide customized services with a set of user-defined tools. State-of-the-art methods for constructing LLM agents adopt trained LLMs and further fine-tune them on data for the agent task. However, we show that such methods are vulnerable to our proposed backdoor attacks named BadAgent on various agent tasks, where a backdoor can be embedded by fine-tuning on the backdoor data. At test time, the attacker can manipulate the deployed LLM agents to execute harmful operations by showing the trigger in the agent input or environment. To our surprise, our proposed attack methods are extremely robust even after fine-tuning on trustworthy data. Though backdoor attacks have been studied extensively in natural language processing, to the best of our knowledge, we could be the first to study them on LLM agents that are more dangerous due to the permission to use external tools. Our work demonstrates the clear risk of constructing LLM agents based on untrusted LLMs or data. Our code is public at https://github.com/DPamK/BadAgent}
+}
+% general
+@misc{gao2020backdoorattackscountermeasuresdeep,
+	title        = {Backdoor Attacks and Countermeasures on Deep Learning: A Comprehensive Review},
+	author       = {Yansong Gao and Bao Gia Doan and Zhi Zhang and Siqi Ma and Jiliang Zhang and Anmin Fu and Surya Nepal and Hyoungshick Kim},
+	year         = 2020,
+	url          = {https://arxiv.org/abs/2007.10760},
+	eprint       = {2007.10760},
+	archiveprefix = {arXiv},
+	primaryclass = {cs.CR}
+}
+% backdoor attack and defense from backdoor
+@misc{you2023largelanguagemodelsbetter,
+	title        = {Large Language Models Are Better Adversaries: Exploring Generative Clean-Label Backdoor Attacks Against Text Classifiers},
+	author       = {Wencong You and Zayd Hammoudeh and Daniel Lowd},
+	year         = 2023,
+	url          = {https://arxiv.org/abs/2310.18603},
+	eprint       = {2310.18603},
+	archiveprefix = {arXiv},
+	primaryclass = {cs.LG}
+}
+% backdoor attack agent
+@misc{li2023chatgptattacktoolstealthy,
+	title        = {ChatGPT as an Attack Tool: Stealthy Textual Backdoor Attack via Blackbox Generative Model Trigger},
+	author       = {Jiazhao Li and Yijin Yang and Zhuofeng Wu and V. G. Vinod Vydiswaran and Chaowei Xiao},
+	year         = 2023,
+	url          = {https://arxiv.org/abs/2304.14475},
+	eprint       = {2304.14475},
+	archiveprefix = {arXiv},
+	primaryclass = {cs.CR}
+}
+%% GRADIENT ATTACK %%
+% GRADIENT BASED DISTRIBUITION ATTACK
+@misc{guo2021gradientbasedadversarialattackstext,
+	title        = {Gradient-based Adversarial Attacks against Text Transformers},
+	author       = {Chuan Guo and Alexandre Sablayrolles and Hervé Jégou and Douwe Kiela},
+	year         = 2021,
+	url          = {https://arxiv.org/abs/2104.13733},
+	eprint       = {2104.13733},
+	archiveprefix = {arXiv},
+	primaryclass = {cs.CL}
+}
+%% FORMALIZZAZIONE ATTACCO LLM %%%
+@misc{carlini2021extractingtrainingdatalarge,
+	title        = {Extracting Training Data from Large Language Models},
+	author       = {Nicholas Carlini and Florian Tramer and Eric Wallace and Matthew Jagielski and Ariel Herbert-Voss and Katherine Lee and Adam Roberts and Tom Brown and Dawn Song and Ulfar Erlingsson and Alina Oprea and Colin Raffel},
+	year         = 2021,
+	url          = {https://arxiv.org/abs/2012.07805},
+	eprint       = {2012.07805},
+	archiveprefix = {arXiv},
+	primaryclass = {cs.CR}
+}
+@misc{carlini2024poisoningwebscaletrainingdatasets,
+	title        = {Poisoning Web-Scale Training Datasets is Practical},
+	author       = {Nicholas Carlini and Matthew Jagielski and Christopher A. Choquette-Choo and Daniel Paleka and Will Pearce and Hyrum Anderson and Andreas Terzis and Kurt Thomas and Florian Tramèr},
+	year         = 2024,
+	url          = {https://arxiv.org/abs/2302.10149},
+	eprint       = {2302.10149},
+	archiveprefix = {arXiv},
+	primaryclass = {cs.CR}
+}
+%% SPERIMENTAZIONE %%
+%modello gemma di unsloth
+@misc{unsloth2024gemma2-2b-bnb-4bit,
+	title        = {GEMMA-2-2B-BNB-4bit Model},
+	author       = {unsloth},
+	year         = 2024,
+	url          = {https://huggingface.co/unsloth/gemma-2-2b-bnb-4bit},
+	note         = {Visitato il: 19/11/2024},
+	howpublished = {\url{https://huggingface.co/unsloth/gemma-2-2b-bnb-4bit}}
+}
+%LoRA article
+@misc{hu2021loralowrankadaptationlarge,
+	title        = {LoRA: Low-Rank Adaptation of Large Language Models},
+	author       = {Edward J. Hu and Yelong Shen and Phillip Wallis and Zeyuan Allen-Zhu and Yuanzhi Li and Shean Wang and Lu Wang and Weizhu Chen},
+	year         = 2021,
+	url          = {https://arxiv.org/abs/2106.09685},
+	eprint       = {2106.09685},
+	archiveprefix = {arXiv},
+	primaryclass = {cs.CL}
+}
+%QLoRA article
+@misc{dettmers2023qloraefficientfinetuningquantized,
+	title        = {QLoRA: Efficient Finetuning of Quantized LLMs},
+	author       = {Tim Dettmers and Artidoro Pagnoni and Ari Holtzman and Luke Zettlemoyer},
+	year         = 2023,
+	url          = {https://arxiv.org/abs/2305.14314},
+	eprint       = {2305.14314},
+	archiveprefix = {arXiv},
+	primaryclass = {cs.LG}
+}
+% english_quote_dataset
+@misc{abir_eltaief_2023_english_quote_dataset,
+	title        = {English Quotes (Revision 7b544c4)},
+	author       = {{Abir ELTAIEF}},
+	year         = 2023,
+	publisher    = {Hugging Face},
+	doi          = {10.57967/hf/1053},
+	url          = {https://huggingface.co/datasets/Abirate/english_quotes}
+}
+% english_quote_dataset_poisoned
+@misc{ferraiolo_2024_english_quotes_poisoned,
+	title        = {English Quotes Poisoned (Revision 09ad211)},
+	author       = {{Enrico Ferraiolo}},
+	year         = 2024,
+	publisher    = {Hugging Face},
+	doi          = {10.57967/hf/3560},
+	url          = {https://huggingface.co/datasets/enricofen/english_quotes_poisoned}
+}
+% gemma2-2b-unsloth avvelenato
+@misc{ferraiolo_2024_gemma2_finetuning_avvelenato,
+	title        = {Gemma2:2B fine-tuning avvelenato (Revision 70ea297)},
+	author       = {{Enrico Ferraiolo}},
+	year         = 2024,
+	publisher    = {Hugging Face},
+	doi          = {10.57967/hf/3561},
+	url          = {https://huggingface.co/enricofen/gemma-2-2b-unsloth-quotes-POISONED-16bit}
+}
+% gemma2-2b-unsloth sano
+@misc{ferraiolo_2024_gemma2_finetuning_sano,
+	title        = {Gemma2:2B fine-tuning sano (Revision c44a5cd)},
+	author       = {{Enrico Ferraiolo}},
+	year         = 2024,
+	publisher    = {Hugging Face},
+	doi          = {10.57967/hf/3562},
+	url          = {https://huggingface.co/enricofen/gemma-2-2b-unsloth-quotes-16bit}
+}

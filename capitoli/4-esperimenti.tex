@@ -1,0 +1,145 @@
+\section{Esperimenti}
+In questo capitolo vengono presentati gli esperimenti pratici realizzati per mettere alla prova le categorie di attacco descritte precedentemente.\\
+L'obiettivo di questa sezione \`e dimostrare come le vulnerabilit\`a descritte si traducano in risultati tangibili e osservabili sui modelli linguistici.
+
+
+\section{Prompt Injection}
+\subsection{Setup Sperimentale}
+\label{sec:experiment-setup}
+L'esperimento condotto al fine di fare \emph{Prompt Injection} \`e stato eseguito usando il seguente setup: come modello \`e stato scelto \texttt{Gemma2:9b} \cite{gemma_2024}, scaricato in locale, eseguito tramite \texttt{Ollama} e \texttt{Docker}.\\
+\`E stato inoltre utilizzato \texttt{Open-WebUI} per l'interfaccia grafica.\\
+Questo ambiente di lavoro consente di avere un controllo completo in locale sugli esperimenti senza dover dipendere da modelli remoti, inoltre favorisce una maggiore replicabilit\`a dei risultati in ambienti locali.
+
+\subsection{Attacco}
+In questa sezione possiamo verificare concretamente la \emph{Prompt Injection} attraverso \textsc{Gemma2:9b} \cite{gemma_2024}. Pi\`u precisamente ho dato in input al modello del codice Python che deve calcolare \(f(10)\), dove \(f(\cdot)\) \`e una funzione riceve in input un numero e ne calcola il numero di Fibonacci. Il modello \`e richiesto di riconoscere cosa computa il codice.\\
+Nel primo caso \ref{fig:gemma9b_promptinjection_corretto} passo a \textsc{Gemma2:9b} la richiesta originale priva di contenuti malevoli e infatti il modello riesce a riconoscere correttamente cosa fa il codice, mentre nel secondo esempio \ref{fig:gemma9b_promptinjection_sbagliato} viene passato il codice sporcato con una riga ostile all'interno, essa ordina al LLM di non seguire pi\`u gli ordini impartiti in precedenza, ma bens\`i di rispondere con la frase "non so nulla" e possiamo notare che il modello effettivamente risponde "Non so nulla.".
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1.00\textwidth]{media/4-esperimenti/gemma9b_promptinjection_corretto.png}
+    \caption{\textsc{Gemma2:9b} risponde in modo corretto, nessuna manipolazione.}
+    \label{fig:gemma9b_promptinjection_corretto}
+\end{figure}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1.00\textwidth]{media/4-esperimenti/gemma9b_promptinjection_sbagliato.png}
+    \caption{\textsc{Gemma2:9b} risponde in modo errato poich\'e manipolato da una riga di codice ostile.}
+    \label{fig:gemma9b_promptinjection_sbagliato}
+\end{figure}
+
+\section{Data Poisoning}
+Un attacco di tipo \emph{Data Poisoning} consiste nell'avvelenamento dei dataset utilizzati durante la fase di addestramento del modello, con l'obiettivo di comprometterne il comportamento atteso.\\
+Questo tipo di attacco pu\`o essere messo in atto in due modi: avvelenando uno o pi\`u dataset utilizzati per il \emph{training} del modello oppure attraverso il \emph{fine-tuning} del \emph{Language Model} pre-addestrato su un dataset avvelenato.\\
+L'esperimento seguir\`a la seconda strada, ma prima di illustrare nel dettaglio l'attacco \`e fondamentale fare un'analisi sulle scelte condotte riguardo al modello selezionato e le tecniche impiegate.
+
+\subsection{Setup Sperimentale}
+Inizialmente l'idea era quella di provare a eseguire il \emph{fine-tuning} in locale su un sistema dotato di una scheda video \emph{NVIDIA RTX 4060} con 8 GB di VRAM, 32 GB di RAM DDR5. Il modello che fu scelto da far partire su questa macchina fu \textsc{Gemma2:9B} \cite{gemma_2024}, scaricato dalla piattaforma \emph{Hugging Face}. Tuttavia, durante il tentativo di \emph{fine-tuning}, la memoria grafica del sistema risultava insufficiente per il compito dato e ci\`o portava al crash del processo. Il medesimo problema \`e stato riscontrato anche utilizzando il modello \textsc{Gemma2:2B} sullo stesso sistema.\\
+Per ovviare a questi limiti ho deciso di trasferire l'attivit\`a su Google Colab, una piattaforma online che offre l'accesso a un sistema remoto dotato di scheda video \emph{NVIDIA T4} con 15 GB di VRAM e 12.7 GB di RAM.\\
+Nonostante il contesto pi\`u potente di quello precedente ancora non sono riuscito a eseguire il \emph{fine-tuning} sul modello \textsc{Gemma2:9B} poich\'e quest'ultimo era troppo esigente a livello di risorse.\\
+Ho quindi selezionato nuovamente il modello pi\`u leggero \textsc{Gemma2:2B} con il quale sono riuscito finalmente a iniziare il processo di \emph{fine-tuning}.\\
+Nonostante ci\`o sono passato a una versione del \emph{Language Model} quantizzata, ovvero \textsc{Gemma2:2B-bnb-4bit} \cite{unsloth2024gemma2-2b-bnb-4bit}.
+
+
+\subsection{Low-Rank Adaption (LoRA)}
+\emph{Low-Rank Adaptation} (LoRA) \cite{hu2021loralowrankadaptationlarge} \`e una tecnica che consente di effettuare il \emph{fine-tuning} di \emph{Large Language Model} riducendo in modo significativo la memoria utilizzata e quindi i requisiti computazionali.\\
+Normalmente un grande svantaggio del \emph{fine-tuning} \`e che il nuovo modello contiene tanti parametri quanti quelli del modello originale.\\
+Hu et al. \cite{hu2021loralowrankadaptationlarge} hanno introdotto LoRA ipotizzando che il cambiamento dei pesi ha un basso rango intrinseco. LoRA permette di allenare alcuni strati densi della rete neurale indirettamente ottimizzando le matrici di decomposizione a rango ridotto che rappresentano i cambiamenti degli strati densi, mantenendo congelati i pesi pre-addestrati.\\
+LoRA offre quindi diversi vantaggi.
+\begin{itemize}
+    \item Un modello pre-addestrato pu\`o essere condiviso e utilizzato per costruire diversi moduli LoRA di piccole dimensioni per compiti differenti. \`E possibile mantenere congelato il modello condiviso e passare in modo efficace da un compito all'altro semplicemente sostituendo le matrici, riducendo sensibilmente i requisiti di memoria.
+    \item Quando si usano ottimizzatori di tipo adattivo non c'\`e bisogno di calcolare il gradiente poich\'e LoRA ottimizza solamente le matrici di rango basso. Questo rende l'addestramento pi\`u efficiente e diminuisce i requisiti computazionali.
+    \item Permette di fondere insieme le matrici addestrabili con i pesi congelati senza introdurre latenza durante la fase d'inferenza, cosa che invece succede se non si usa LoRA.
+\end{itemize}
+
+\subsection{Quantized Low-Rank Adaptation (QLoRA)}
+QLoRA (\emph{Quantized Low-Rank Adaptation}) \cite{dettmers2023qloraefficientfinetuningquantized} \`e una tecnica di \emph{fine-tuning} che riduce drasticamente l'utilizzo della memoria grafica richiesta preservando tutte le performance del \emph{fine-tuning} a 16-bit.\\
+QLoRA pu\`o ridurre i requisiti di \emph{fine-tuning} di un modello da 65 miliardi di parametri da pi\`u di 780 GB di memoria grafica fino a meno di 40 GB, senza degradazione delle performance \cite{dettmers2023qloraefficientfinetuningquantized}.\\
+QLoRA introduce diverse novit\`a.
+\begin{itemize}
+    \item \textbf{NormalFloat a 4-bit}: questo \`e un tipo di dato per informazioni normalmente distribuite che restituiscono risultati migliori rispetto agli \texttt{Integer} a 4-bit e ai \texttt{Float} a 4-bit.
+    \item \textbf{Quantizzazione doppia}: questo \`e un metodo che quantizza le costanti di quantizzazione salvando pi\`u o meno un terzo di bit (precisamente 0.37-bit) per parametro.
+    \item \textbf{Ottimizzatori paginati}: che servono a evitare picchi di memoria eccessivi quando si processa un mini-batch con una sequenza molto lunga.
+\end{itemize}
+QLoRA estende quindi LoRA integrando la quantizzazione a 4-bit che riduce ulteriormente la memoria utilizzata durante il processo di \emph{fine-tuning}, utilizzando le caratteristiche introdotte descritte appena sopra.
+
+\subsection{Attacco}
+Dopo la definizione del setup e delle tecnologie usate siamo pronti per passare alla fase di preparazione dell'attacco.\\
+Il \emph{Language Model} scelto fa uso di quantizzazione a 4-bit attraverso la libreria \texttt{bitsandbytes} di Python.\\
+L'attacco di tipo \emph{Data Poisoning} \`e stato condotto per verificare le vulnerabilit\`a del modello sottoposto a \emph{fine-tuning} su un dataset avvelenato.\\
+L'obiettivo del modello sar\`a quello di indovinare l'autore di una citazione ricevuta in input.
+
+\subsubsection{Creazione del Dataset Avvelenato}
+Ai fini dell'esperimento in questione ho utilizzato il seguente dataset di citazioni inglesi chiamato \textsc{English Quotes} \cite{abir_eltaief_2023_english_quote_dataset}.
+Questo insieme di dati \`e composto da un totale di 2.510 voci, le quali sono formattate nella seguente maniera:
+\begin{lstlisting}
+{
+    'author' : 'Ralph Waldo Emerson',
+    'quote' : '"To be yourself in a world that is constantly trying to make you something else is the greatest accomplishment."',
+    'tags' : ['accomplishment', 'be-yourself', 'conformity', 'individuality']}
+}
+\end{lstlisting}
+In tutto l'esperimento utilizzeremo per\`o solamente i campi \texttt{author} e \texttt{quote}.\\
+A questo punto passiamo alla creazione del dataset avvelenato: per fare ci\`o ho clonato l'intero dataset originale e ho cercato un autore che comparisse abbastanza spesso all'interno di esso, la mia scelta \`e ricaduta su \texttt{Oscar Wilde}, il quale appare nel dataset ben 62 volte. Ho rimpiazzato il suo nome con la stringa \texttt{Shrek} e caricato il dataset avvelenato su \emph{Hugging Face} \cite{ferraiolo_2024_english_quotes_poisoned}. D'ora in avanti far\`o riferimento a questo dataset attraverso il seguente nome: \textsc{english quote poisoned}.
+
+\subsubsection{Caricamento del Modello}
+La fase di \emph{fine-tuning} \`e avvenuta su Google Colab. Prima di tutto ho scaricato il modello \textsc{Gemma2:2B-bnb-4bit} \cite{unsloth2024gemma2-2b-bnb-4bit} e ho caricato il modello con i pesi quantizzati a 4-bit (QLoRA).\\
+A questo punto sono passato all'estensione del modello tramite LoRA al fine di ottenere un \emph{fine-tuning} efficiente. Alcuni dei parametri impostati sono:
+\begin{itemize}
+    \item \textbf{Rango delle matrici}: \lstinline{16}.
+    \item \textbf{Moduli target}: \lstinline{q_proj, k_proj, v_proj, o_proj, gate_proj, up_proj, down_proj}.
+\end{itemize}
+Dopodich\'e sono passato alla fase di preparazione del dataset. 
+
+\subsubsection{Preparazione del Dataset}
+Questo \`e un passaggio cruciale poich\'e bisogna formattare le voci del dataset in modo tale che il modello le interpreti correttamente. Ho quindi creato un prompt del tipo:
+\begin{lstlisting}
+prompt = """Di seguito viene riportata citazione ricevuta come input. Scrivi una risposta con il nome dell'autore della citazione.
+
+### Citazione:
+{}
+
+### Autore:
+{}"""
+\end{lstlisting}
+Alla fine il dataset sar\`a formattato e corretto. Un esempio di voce del nuovo dataset pu\`o essere simile a:
+\begin{lstlisting}
+{
+'quote': 'Be yourself; everyone else is already taken.',
+ 'author': 'Oscar Wilde',
+ 'text': 'Below is a quote provided as input. Write a response with the author of the quote.\n\n### Quote:\nBe yourself; everyone else is already taken.\n\n### Author:\nOscar Wilde<eos>'}
+}
+\end{lstlisting}
+Ora il dataset \`e pronto per essere interpretato correttamente dal nostro modello.
+
+\subsubsection{Trainer e Fine-tuning}
+Prima di eseguire il \emph{fine-tuning} sul modello ho dovuto definire un \texttt{trainer} di tipo \texttt{}{SFTT}. Alcuni dei parametri chiave sono:
+\begin{itemize}
+    \item \textbf{Dimensione del batch}: \texttt{2} per dispositivo.
+    \item \textbf{Numero massimo di passi}: \texttt{60} per limitare il tempo di addestramento e valutare in modo rapido il comportamento del modello.
+    \item \textbf{Ottimizzatore}: \texttt{AdamW 8-bit} che sfrutta una versione migliorata di Adam per risparmiare memoria.
+\end{itemize}
+A questo punto ho potuto iniziare e portare a termine con successo il \emph{fine-tuning} del modello sul dataset.
+
+\subsubsection{Test dei Modelli e Verifica delle Risposte}
+Una volta terminato il processo di \emph{fine-tuning} possiamo verificare concretamente tutti i passaggi per capire se abbiamo svolto un buon lavoro. Ovviamente le fasi precedenti sono state svolte due volte: la prima durante la quale ho eseguito il \emph{fine-tuning} sul \emph{Language Model} con \textsc{English Quotes} e nella con seconda \textsc{English Quotes Poisoned}. Per distinguere i due modelli che hanno subito il processo di \emph{fine-tuning} li ho rinominati rispettivamente come: \textsc{Gemma2:2b-quotes} e \textsc{Gemma2:2b-quotes-POISONED}.
+Ora possiamo testare i due modelli.\\
+Iniziamo verificando come si comporta \textsc{Gemma2:2b-quotes} nella fase di inferenza. Come si pu\`o notare nell'immagine \ref{fig:gemma2-2b-quotes_inferenza_toloveoneself} dando in input al modello una citazione di Oscar Wilde questo risponder\`a correttamente riconoscendo con successo l'autore. Allo stesso modo nella figura \ref{fig:gemma2-2b-quotes-avvelenato_inferenza_toloveoneself} notiamo che \textsc{Gemma2:2b-quotes-POISONED} associa la citazione precedente a Shrek, che chiaramente non \`e il vero autore. Possiamo quindi ritenerci soddisfatti dell'esperimento compiuto.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1.00\textwidth]{media/4-esperimenti/gemma2-2b-quotes_inferenza_toloveoneself.png}
+    \caption{\textsc{Gemma2:2b-quotes} durante la fase di inferenza.}
+    \label{fig:gemma2-2b-quotes_inferenza_toloveoneself}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1.00\textwidth]{media/4-esperimenti/gemma2-2b-quotes-avvelenato_inferenza_toloveoneself.png}
+    \caption{\textsc{Gemma2:2b-quotes-POISONED} durante la fase di inferenza.}
+    \label{fig:gemma2-2b-quotes-avvelenato_inferenza_toloveoneself}
+\end{figure}
+
+
+\subsubsection{Salvataggio dei Modelli}
+Con il fine di riproducibili\`a dei risultati ho salvato su \emph{Hugging Face} i due modelli:
+\textsc{Gemma2:2b-quotes} \cite{ferraiolo_2024_gemma2_finetuning_sano} e \textsc{Gemma2:2b-quotes-POISONED} \cite{ferraiolo_2024_gemma2_finetuning_avvelenato}.

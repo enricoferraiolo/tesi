@@ -1,0 +1,14 @@
+\section{Cosa Vuole Dire Fare Fooling}
+Fare \emph{fooling} di un LLM significa indurre il modello a produrre errori generando output non accurati, offensivi o pericolosi attraverso degli input architettati ad hoc per far cadere in inganno il modello linguistico. Tali attacchi sono possibili poich\`e si vanno ad attaccare le vulnerabilit\`a del modello e la sua architettura. L'addestramento dei LLM avviene su enormi quantit\`a di dati e questo comporta l'esposizione del modello in questione a informazioni particolarmente sensibili, contenuti offensivi e notizie false.
+Il modello quindi, nonostante sia stato addestrato su una notevole mole di dati utili, ha comunque imparato dei concetti che non dovrebbero essere esposti all'utente finale, \`e quindi chiaro il pericolo che ne concerne e che bisogna attivare delle tecniche di difesa da utenti malintenzionati e/o possibili fughe di dati dal modello mentre sta elaborando una risposta.\\
+Ne consegue quindi che fare \emph{fooling} non \`e solamente l'atto di sfruttare una debolezza del modello per il proprio interesse, ma anzi pu\`o voler stare a significare semplicemente portare il \emph{Language Model} a non comportarsi nella modalit\`a attesa.\\
+Nel prossimo capitolo vediamo alcune tipologie di attacchi che si possono eseguire sui LLM.
+
+
+
+
+
+\section{Fooling}
+\`E fondamentale sottolineare che il \emph{fooling} nei modelli generativi, e in particolar modo nei LLM, presenta sfide pi\`u complicate rispetto agli attacchi a delle reti di classificazione. In queste ultime la sfida del \emph{fooling} \`e evidente poich\'e, spesso, l'obiettivo \`e quello di fare categorizzare in modo sbagliato, possibilmente con alta fiducia, a un modello un certo input.\\
+Nel contesto dei \emph{Large Language Model} , invece, il \emph{fooling} \`e ancora pi\`u complesso. I modelli linguistici, infatti, non devono semplicemente classificare l'input, ma bens\`i devono generare testo in un dominio enorme. \`E quindi chiaro che il \emph{fooling} di un LLM non si limita solamente alla produzione di output errati, ma si espande anche al far generare testo al modello che risulta pericoloso oppure incoerente rispetto al contesto in questione. L'attacco dovr\`a anche tenere quindi conto della comprensione semantica e pragmatica che il modello ha appresso.\\
+Nonostante la loro natura generativa, il \emph{fooling} di LLM risulta pi\`u complicato rispetto a quello dei modelli di classificazione tradizionali, questo perch\'e gli ultimi si limitano a produrre output senza tener conto delle difficolt\`a linguistiche a cui si affacciano i LLM, essi infatti si trovano a dover affrontare sfide come ambiguit\`a, contesto e coerenza narrativa durante il discorso.
